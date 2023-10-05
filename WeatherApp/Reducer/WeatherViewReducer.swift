@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import StateMachinePackage
+//import StateMachinePackage
 
 struct WeatherViewReducer {
     static func reduce(state: WeatherViewState, intent: WeatherViewIntent, weatherData: WeatherModel?, error: Error?) -> WeatherViewState {
