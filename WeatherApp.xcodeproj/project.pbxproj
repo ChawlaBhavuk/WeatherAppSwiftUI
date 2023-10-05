@@ -59,6 +59,7 @@
 		68517CDE2ACE3C37009FA322 /* WeatherViewReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewReducer.swift; sourceTree = "<group>"; };
 		68517CE02ACE3CB5009FA322 /* WeatherViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModelTests.swift; sourceTree = "<group>"; };
 		68517CE22ACE4DED009FA322 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		68517CF22ACE964B009FA322 /* StateMachinePackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StateMachinePackage; sourceTree = "<group>"; };
 		685948C62ACA4E40003125C0 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		685948C92ACA4E40003125C0 /* WeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp.swift; sourceTree = "<group>"; };
 		685948CB2ACA4E40003125C0 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 		68517CE72ACE8FA3009FA322 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				68517CF22ACE964B009FA322 /* StateMachinePackage */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
