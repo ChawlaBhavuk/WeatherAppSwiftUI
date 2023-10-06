@@ -6,21 +6,24 @@
 //
 
 import SwiftUI
-
+import StateMachinePackage
 
 struct WeatherView: View {
-    @ObservedObject var viewModel: WeatherViewModel
-
+    @ObservedObject var viewModel: WeatherDataHandling
+    @ObservedObject var stateMachine: ViewStateMachine<WeatherViewState, WeatherViewEvent>
+    
     var body: some View {
         NavigationView {
             ZStack {
                 BackgroundView()
                 VStack {
-                    switch viewModel.state {
+                    switch stateMachine.state {
                     case .idle:
                         EmptyView()
+                        let _ = stateMachine.send(.getCurrrentLocation)
                     case .loading:
                         ProgressView("Loading...")
+                        let _ = stateMachine.send(.fetchWeather)
                     case .loaded(let weatherData):
                         WeatherDetailView(weatherData: weatherData)
                     case .error(let error):
@@ -32,7 +35,10 @@ struct WeatherView: View {
             }
         }
         .onAppear {
-            viewModel.send(intent: .getLocation)
+            Task {
+                await self.stateMachine.start()
+            }
         }
     }
 }
+

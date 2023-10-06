@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "statemachinepackage",
+      "kind" : "localSourceControl",
+      "location" : "/Users/bhavukchawla/Documents/projects/StateMachinePackage",
+      "state" : {
+        "branch" : "main",
+        "revision" : "e3235dad4d8cd2d88768a72dfac0fcd3a22b3de0"
+      }
+    }
+  ],
+  "version" : 2
+}

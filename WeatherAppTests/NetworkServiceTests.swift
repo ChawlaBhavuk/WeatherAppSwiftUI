@@ -9,72 +9,77 @@ import XCTest
 import Combine
 @testable import WeatherApp
 
+class NetworkServiceTests: XCTestCase {
 
-//class ProfileTests: XCTestCase {
-//    // custom urlsession for mock network calls
-//    var urlSession: URLSession!
-//
-//    override func setUpWithError() throws {
-//        // Set url session for mock networking
-//        let configuration = URLSessionConfiguration.ephemeral
-//        configuration.protocolClasses = [MockURLProtocol.self]
-//        urlSession = URLSession(configuration: configuration)
-//    }
-//
-//    func testGetProfile() throws {
-//        // Profile API. Injected with custom url session for mocking
-//        let profileAPI = ProfileAPI(urlSession: urlSession)
-//
-//        // Set mock data
-//        let sampleProfileData = UserProfile(name: "Yugantar")
-//        let mockData = try JSONEncoder().encode(sampleProfileData)
-//
-//        // Return data in mock request handler
-//        MockURLProtocol.requestHandler = { request in
-//            return (HTTPURLResponse(), mockData)
-//        }
-//
-//        // Set expectation. Used to test async code.
-//        let expectation = XCTestExpectation(description: "response")
-//
-//        // Make mock network request to get profile
-//        profileAPI.getProfile { user in
-//            // Test
-//            XCTAssertEqual(user.name, "Yugantar")
-//            expectation.fulfill()
-//        }
-//        wait(for: [expectation], timeout: 1)
-//    }
-//}
+    var networkService: NetworkService!
+    var cancellables: Set<AnyCancellable> = []
 
-
-class MockURLProtocol: URLProtocol {
-    static var requestHandler: ((URLRequest) throws -> (HTTPURLResponse, Data))?
-
-    override class func canInit(with request: URLRequest) -> Bool {
-        return true
+    override func setUp() {
+        let configuration = URLSessionConfiguration.default
+        configuration.protocolClasses = [MockURLProtocol.self]
+        let urlSession = URLSession.init(configuration: configuration)
+        let url = URL(string: "https://test.com")!
+        networkService = NetworkService(baseURL: url, session: urlSession)
     }
 
-    override class func canonicalRequest(for request: URLRequest) -> URLRequest {
-        return request
-    }
+    func testSuccessfulRequest() {
+        let mockData = MockAPIService<WeatherModel>().mockWeatherData()
+        let encoder = JSONEncoder()
+        let jsonData = try? encoder.encode(mockData)
 
-    override func startLoading() {
-        guard let handler = MockURLProtocol.requestHandler else {
-            XCTFail("Received unexpected request with no handler set")
-            return
+        // Set up the MockURLProtocol to handle requests
+        MockURLProtocol.requestHandler = { request in
+            let response = HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            return (response, jsonData!)
         }
-        do {
-            let (response, data) = try handler(request)
-            client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-            client?.urlProtocol(self, didLoad: data)
-            client?.urlProtocolDidFinishLoading(self)
-        } catch {
-            client?.urlProtocol(self, didFailWithError: error)
-        }
+
+        let endpoint = WeatherEndpoint.currentWeather(lat: "23", lon: "23")
+        let expectation = XCTestExpectation(description: "Successful request")
+
+        self.networkService.request(type: WeatherModel.self, endpoint)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    XCTAssertNotNil(error)
+                }
+            }, receiveValue: { data in
+                XCTAssertNotNil(data)
+                XCTAssertEqual(data.data.nearestArea.first?.areaName.first?.value, "Toronto")
+                expectation.fulfill()
+            })
+            .store(in: &self.cancellables)
+        wait(for: [expectation], timeout: 2.0)
     }
 
-    override func stopLoading() {
+    func testNetworkError() {
+        MockURLProtocol.requestHandler = { request in
+            let error = NetworkError.responseError
+            throw error
+        }
+
+        let endpoint = WeatherEndpoint.currentWeather(lat: "23", lon: "23")
+        let expectation = XCTestExpectation(description: "Network error")
+
+        self.networkService.request(type: WeatherModel.self, endpoint)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    XCTAssertNotNil(error)
+                    XCTAssertEqual(error, NetworkError.responseError)
+                    expectation.fulfill()
+                }
+            }, receiveValue: { _ in
+                XCTFail("Received unexpected data for a network error")
+            })
+            .store(in: &self.cancellables)
+
+        wait(for: [expectation], timeout: 2.0)
     }
+
 }
+
 

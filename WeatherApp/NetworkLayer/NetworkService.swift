@@ -20,9 +20,9 @@ class NetworkService: APIService {
 
     private var cancellables = Set<AnyCancellable>()
 
-    func request<T>(type: T.Type, _ endpoint: Endpoint) -> Future<T, Error> where T : Decodable {
+    func request<T>(type: T.Type, _ endpoint: Endpoint) -> Future<T, NetworkError> where T : Decodable {
 
-        return Future<T, Error>  { [weak self] promise in
+        return Future<T, NetworkError>  { [weak self] promise in
 
             guard let self = self,
                   let request =  self.getUrlRequest(endpoint) else {
@@ -42,12 +42,10 @@ class NetworkService: APIService {
                 .sink { completion in
                     if case let .failure(error) = completion {
                         switch error {
-                        case let decodingError as DecodingError:
-                            promise(.failure(decodingError))
                         case let apiError as NetworkError:
                             promise(.failure(apiError))
                         default:
-                            promise(.failure(NetworkError.unknown))
+                            promise(.failure(NetworkError.responseError))
                         }
                     }
                 } receiveValue: { data in
@@ -84,3 +82,4 @@ class NetworkService: APIService {
 
     }
 }
+

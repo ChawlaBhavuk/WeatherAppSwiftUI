@@ -3,4 +3,85 @@
    uuid = "A824DD35-1CFD-429A-BA84-F2FB73DF4259"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C77935D-67E4-4106-BE18-1B4099514A04"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Library/Developer/Xcode/DerivedData/WeatherApp-bpiecwuklnjzyhauljcrywxaccsg/SourcePackages/checkouts/StateMachinePackage/Sources/public/AsyncStateMachine.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "initialState"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84CD0E52-A690-4AB4-AB97-D0AD43ADD2DF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTests/WeatherViewModelTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "testFetchWeatherDataWithContinuationError()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "84CD0E52-A690-4AB4-AB97-D0AD43ADD2DF - 9ec18b7120e7dc8e"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for WeatherAppTests.WeatherViewModelTests.testFetchWeatherDataWithContinuationError() async -&gt; ()"
+                  moduleName = "WeatherAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhavukchawla/Documents/projects/WeatherApp/WeatherAppTests/WeatherViewModelTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "580">
+               </Location>
+               <Location
+                  uuid = "84CD0E52-A690-4AB4-AB97-D0AD43ADD2DF - 778a4ace7064fed1"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for WeatherAppTests.WeatherViewModelTests.testFetchWeatherDataWithContinuationError() async -&gt; ()"
+                  moduleName = "WeatherAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhavukchawla/Documents/projects/WeatherApp/WeatherAppTests/WeatherViewModelTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "288">
+               </Location>
+               <Location
+                  uuid = "84CD0E52-A690-4AB4-AB97-D0AD43ADD2DF - 778a4ace7064e132"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for WeatherAppTests.WeatherViewModelTests.testFetchWeatherDataWithContinuationError() async -&gt; ()"
+                  moduleName = "WeatherAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhavukchawla/Documents/projects/WeatherApp/WeatherAppTests/WeatherViewModelTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "144">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

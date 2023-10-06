@@ -14,13 +14,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     @Published var latitude: Double = 0.0
     @Published var longitude: Double = 0.0
-    var isLocationEnabledSubject = CurrentValueSubject<Bool, Never>(false)
-
-    var isLocationEnabled: Bool {
-        get { isLocationEnabledSubject.value }
-        set { isLocationEnabledSubject.send(newValue) }
-    }
-
+    var isLocationEnabledSubject = PassthroughSubject<Bool, Never>()
+    var locationEnabled: Bool?
     private var cancellables: Set<AnyCancellable> = []
 
     override init() {
@@ -35,17 +30,18 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         if let location = locations.last {
             self.latitude = location.coordinate.latitude
             self.longitude = location.coordinate.longitude
-            self.isLocationEnabled = true
+            locationEnabled = true
+            isLocationEnabledSubject.send(true)
         }
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             locationManager.startUpdatingLocation()
+            locationEnabled = true
         } else if status == .denied || status == .restricted {
-            isLocationEnabled = false
+            isLocationEnabledSubject.send(false)
+            locationEnabled = false
         }
     }
-
-
 }

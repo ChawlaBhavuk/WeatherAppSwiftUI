@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 protocol APIService {
-    func request<T: Decodable>(type: T.Type, _ endpoint: Endpoint) -> Future<T, Error> 
+    func request<T: Decodable>(type: T.Type, _ endpoint: Endpoint) -> Future<T, NetworkError> 
 }
