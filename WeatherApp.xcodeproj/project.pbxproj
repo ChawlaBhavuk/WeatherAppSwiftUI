@@ -11,7 +11,6 @@
 		68517CDD2ACE3C2D009FA322 /* WeatherViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68517CDC2ACE3C2D009FA322 /* WeatherViewEvent.swift */; };
 		68517CE12ACE3CB5009FA322 /* WeatherDataHandlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68517CE02ACE3CB5009FA322 /* WeatherDataHandlingTests.swift */; };
 		68517CE32ACE4DED009FA322 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68517CE22ACE4DED009FA322 /* NetworkServiceTests.swift */; };
-		68517D032ACEA084009FA322 /* StateMachinePackage in Frameworks */ = {isa = PBXBuildFile; productRef = 68517D022ACEA084009FA322 /* StateMachinePackage */; };
 		68517D062ACEA152009FA322 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68517D052ACEA152009FA322 /* StateMachine.swift */; };
 		68517D0B2ACF946F009FA322 /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68517D0A2ACF946F009FA322 /* MockAPIService.swift */; };
 		68517D0D2ACF94DF009FA322 /* MockLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68517D0C2ACF94DF009FA322 /* MockLocationManager.swift */; };
@@ -39,6 +38,7 @@
 		6859491B2ACD4027003125C0 /* WeatherDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6859491A2ACD4027003125C0 /* WeatherDetailView.swift */; };
 		6859491D2ACD58F2003125C0 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6859491C2ACD58F2003125C0 /* DaysView.swift */; };
 		6859491F2ACD5F4D003125C0 /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6859491E2ACD5F4D003125C0 /* CurrentWeatherView.swift */; };
+		687AE8B82ACFB15900B8EAB1 /* StateMachinePackage in Frameworks */ = {isa = PBXBuildFile; productRef = 687AE8B72ACFB15900B8EAB1 /* StateMachinePackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68517D032ACEA084009FA322 /* StateMachinePackage in Frameworks */,
+				687AE8B82ACFB15900B8EAB1 /* StateMachinePackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +300,7 @@
 			);
 			name = WeatherApp;
 			packageProductDependencies = (
-				68517D022ACEA084009FA322 /* StateMachinePackage */,
+				687AE8B72ACFB15900B8EAB1 /* StateMachinePackage */,
 			);
 			productName = WeatherApp;
 			productReference = 685948C62ACA4E40003125C0 /* WeatherApp.app */;
@@ -353,7 +353,7 @@
 			);
 			mainGroup = 685948BD2ACA4E40003125C0;
 			packageReferences = (
-				68517D012ACEA084009FA322 /* XCRemoteSwiftPackageReference "StateMachinePackage" */,
+				687AE8B62ACFB15900B8EAB1 /* XCRemoteSwiftPackageReference "StateMachinePackage" */,
 			);
 			productRefGroup = 685948C72ACA4E40003125C0 /* Products */;
 			projectDirPath = "";
@@ -688,9 +688,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		68517D012ACEA084009FA322 /* XCRemoteSwiftPackageReference "StateMachinePackage" */ = {
+		687AE8B62ACFB15900B8EAB1 /* XCRemoteSwiftPackageReference "StateMachinePackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = /Users/bhavukchawla/Documents/projects/StateMachinePackage;
+			repositoryURL = "https://github.com/ChawlaBhavuk/StateMachinePackage";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -699,9 +699,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		68517D022ACEA084009FA322 /* StateMachinePackage */ = {
+		687AE8B72ACFB15900B8EAB1 /* StateMachinePackage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 68517D012ACEA084009FA322 /* XCRemoteSwiftPackageReference "StateMachinePackage" */;
+			package = 687AE8B62ACFB15900B8EAB1 /* XCRemoteSwiftPackageReference "StateMachinePackage" */;
 			productName = StateMachinePackage;
 		};
 /* End XCSwiftPackageProductDependency section */

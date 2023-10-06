@@ -2,11 +2,11 @@
   "pins" : [
     {
       "identity" : "statemachinepackage",
-      "kind" : "localSourceControl",
-      "location" : "/Users/bhavukchawla/Documents/projects/StateMachinePackage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ChawlaBhavuk/StateMachinePackage",
       "state" : {
         "branch" : "main",
-        "revision" : "e3235dad4d8cd2d88768a72dfac0fcd3a22b3de0"
+        "revision" : "1dbeb756a08a664ccf2ec488ed5e566e75998405"
       }
     }
   ],
